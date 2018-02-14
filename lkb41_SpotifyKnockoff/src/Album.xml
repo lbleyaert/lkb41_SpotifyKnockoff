@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<albumList>
+	<album>
+		<albumID></albumID>
+		<title></title>
+		<releaseDate></releaseDate>
+		<coverImagePath></coverImagePath>
+		<recordingCompany></recordingCompany>
+		<numberOfTracks></numberOfTracks>
+		<pmrcRating></pmrcRating>
+		<length></length>
+		<albumSongs></albumSongs>
+	</album>
+</albumList>
+
+

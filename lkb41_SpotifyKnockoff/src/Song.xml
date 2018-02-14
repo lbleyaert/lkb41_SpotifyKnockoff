@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<songList>
+	<song>
+		<songID></songID>
+		<title></title>
+		<length></length>
+		<filePath></filePath>
+		<releaseDate></releaseDate>	
+		<recordDate></recordDate>
+		<songArtists></songArtists>
+	</song>
+</songList>
+
+

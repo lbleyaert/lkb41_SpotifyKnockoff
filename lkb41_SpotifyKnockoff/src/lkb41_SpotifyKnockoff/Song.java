@@ -24,7 +24,7 @@ public class Song {
 	private String filePath;
 	private String releaseDate; 
 	private String recordDate;
-	Map<String, Artist> songArtists;
+	private Map<String, Artist> songArtists;
 	
 	/**
 	 * This constructor creates an instance of class Song using the parameters passed through.  The constructor 
@@ -43,7 +43,7 @@ public class Song {
 		//need to generate unique identifier for each Song that is entered
 		this.songID = UUID.randomUUID().toString();
 		
-		songArtists = new Hashtable<String, Artist>();
+		this.songArtists = new Hashtable<String, Artist>();
 
 		String sql = "INSERT INTO song(song_id, title, length, file_path, release_date, record_date) ";
 		sql += "VALUES (?, ?, ?, ?, ?, ?);";
@@ -88,7 +88,7 @@ public class Song {
 		this.releaseDate = releaseDate;
 		this.recordDate = recordDate;
 		
-		songArtists = new Hashtable<String, Artist>();
+		this.songArtists = new Hashtable<String, Artist>();
 	}
 	
 	
@@ -101,7 +101,7 @@ public class Song {
 	 */
 	public Song(String songID) {
 		
-		songArtists = new Hashtable<String, Artist>();
+		this.songArtists = new Hashtable<String, Artist>();
 		
 		String sql = "SELECT * FROM song WHERE song_id = '" + songID + "';";
 		//want to populate the songArtist Hashtable of the object as well - need to look at song_artist table for this song

@@ -28,7 +28,7 @@ public class Album {
 	private int numberOfTracks;
 	private String pmrcRating;
 	private double length;
-	Map<String, Song> albumSongs;
+	private Map<String, Song> albumSongs;
 	
 	
 	/**
@@ -51,7 +51,7 @@ public class Album {
 		this.numberOfTracks = numOfTracks;
 		this.pmrcRating = pmrcRating;
 		this.length = length;
-		albumSongs = new Hashtable<String, Song>();
+		this.albumSongs = new Hashtable<String, Song>();
 		
 		
 		String sql = "INSERT INTO album(album_id, title, release_date, cover_image_path, recording_company_name, number_of_tracks, "
@@ -105,7 +105,7 @@ public class Album {
 		this.numberOfTracks = numOfTracks;
 		this.pmrcRating = pmrcRating;
 		this.length = length;
-		albumSongs = new Hashtable<String, Song>();
+		this.albumSongs = new Hashtable<String, Song>();
 		//SHOULD THIS CONSTRUCTOR CONNECT TO DB TO POPULATE THE ALBUMSONGS HASHTABLE WITH ANY RELATED SONGS?
 	
 	}
@@ -121,7 +121,7 @@ public class Album {
 	 */
 	public Album(String albumID) {
 		
-		albumSongs = new Hashtable<String, Song>();
+		this.albumSongs = new Hashtable<String, Song>();
 		
 		String sql = "SELECT * FROM album WHERE album_id = '" + albumID + "';";
 		String hashtableInfo = "SELECT * FROM album_song WHERE fk_album_id = '" + albumID + "';";
