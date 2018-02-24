@@ -7,6 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,13 +22,34 @@ import javax.swing.JOptionPane;
  * @author lbley
  * Created: 01/23/18
  */
+@Entity
+@Table (name = "artist")
 public class Artist {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	@Column (name = "artist_id")
 	private String artistID;
+	
+	@Column (name = "first_name")
 	private String firstName;
+	
+	@Column (name = "last_name")
 	private String lastName;
+	
+	@Column (name = "band_name")
 	private String bandName;
+	
+	@Column (name = "bio")
 	private String bio;
+	
+	/**
+	 * Artist Constructor that takes no arguments.  It makes a call to the super class for JPA purposes.
+	 */
+	public Artist() {
+		super();
+	}
+	
 	
 	/**
 	 * This constructor creates an instance of class Artist using the parameters passed through.  The constructor 
@@ -34,6 +61,7 @@ public class Artist {
 	 */
 	public Artist(String firstName, String lastName, String bandName) {
 		
+		super();
 		this.artistID = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -76,6 +104,7 @@ public class Artist {
 	 */
 	public Artist(String artistID, String firstName, String lastName, String bandName) {
 		
+		super();
 		this.artistID = artistID;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -92,6 +121,7 @@ public class Artist {
 	 * @param artistID	the UUID that was generated for a specific Artist
 	 */
 	public Artist(String artistID) {
+		super();
 		String sql = "SELECT * FROM artist WHERE artist_id = '" + artistID + "';";
 		//System.out.println(sql);
 		
@@ -211,6 +241,26 @@ public class Artist {
 
 	public String getBandName() {
 		return bandName;
+	}
+
+
+	public void setArtistID(String artistID) {
+		this.artistID = artistID;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public void setBandName(String bandName) {
+		this.bandName = bandName;
 	}
 	
 	

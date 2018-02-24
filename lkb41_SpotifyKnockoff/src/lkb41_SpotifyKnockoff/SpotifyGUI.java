@@ -41,6 +41,7 @@ public class SpotifyGUI {
 
 	/**
 	 * Launch the application.
+	 * @param args - generic command line arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

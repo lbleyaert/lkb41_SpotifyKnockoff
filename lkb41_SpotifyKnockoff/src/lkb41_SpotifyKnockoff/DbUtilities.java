@@ -93,7 +93,7 @@ public class DbUtilities {
      * Get SQL result set (data set) based on an SQL query
      * @param sql - SQL SELECT query
      * @return - ResultSet - java.sql.ResultSet object, contains results from SQL query argument
-     * @throws SQLException
+     * @throws SQLException - error
      */
     public ResultSet getResultSet(String sql) throws SQLException {  
         try {
@@ -132,7 +132,7 @@ public class DbUtilities {
      * Creates a model for JTable using default database table column names as table headers
      * @param sql - SQL SELECT query
      * @return a model for JTable
-     * @throws SQLException
+     * @throws SQLException - error
      */
     public DefaultTableModel getDataTable(String sql) throws SQLException{
     	ResultSet rs = getResultSet(sql);
@@ -167,7 +167,7 @@ public class DbUtilities {
      * @param sqlQuery - SQL SELECT query
      * @param customColumnNames - an array containing custom column names for table headers
      * @return a model for JTable
-     * @throws SQLException
+     * @throws SQLException - error
      */
     public DefaultTableModel getDataTable(String sqlQuery, String[] customColumnNames) throws SQLException{
     	ResultSet rs = getResultSet(sqlQuery);

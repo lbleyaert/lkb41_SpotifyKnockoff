@@ -1,6 +1,15 @@
 package lkb41_SpotifyKnockoff;
 
 import java.util.Map;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +24,42 @@ import java.util.*;
  * This will add or delete them both within the object Hashtable and the database song_artist table.
  * @author lbley
  * Created: 01/23/18
+ * Updated JPA: 02/22/18
  */
+@Entity
+@Table (name = "song")
 public class Song {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
+	@Column (name = "song_id")
 	private String songID;
+	
+	@Column (name = "title")
 	private String title;
+	
+	@Column (name = "length")
 	private double length;
+	
+	@Column (name = "file_path")
 	private String filePath;
+	
+	@Column (name = "release_date")
 	private String releaseDate; 
+	
+	@Column (name = "record_date")
 	private String recordDate;
+	
+	@Transient
 	private Map<String, Artist> songArtists;
+	
+	
+	/**
+	 * Song Constructor that takes no arguments.  It makes a call to the super class for JPA purposes.
+	 */
+	public Song() {
+		super();
+	}
 	
 	/**
 	 * This constructor creates an instance of class Song using the parameters passed through.  The constructor 
@@ -36,6 +71,8 @@ public class Song {
 	 * @param recordDate	the date the song was recorded
 	 */
 	public Song(String title, double length, String releaseDate, String recordDate) {
+		super();
+		
 		this.title = title;
 		this.length = length;
 		this.releaseDate = releaseDate;
@@ -82,6 +119,8 @@ public class Song {
 	 * @param recordDate	the date the song was recorded
 	 */
 	public Song(String songID, String title, double length, String releaseDate, String recordDate) {
+		super();
+		
 		this.songID = songID;
 		this.title = title;
 		this.length = length;
@@ -100,6 +139,7 @@ public class Song {
 	 * @param songID	the UUID that was generated for a specific song
 	 */
 	public Song(String songID) {
+		super();
 		
 		this.songArtists = new Hashtable<String, Artist>();
 		
@@ -369,6 +409,26 @@ public class Song {
 
 	public String getRecordDate() {
 		return recordDate;
+	}
+
+	public void setSongID(String songID) {
+		this.songID = songID;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setLength(double length) {
+		this.length = length;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public void setRecordDate(String recordDate) {
+		this.recordDate = recordDate;
 	}
 
 	

@@ -10,6 +10,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 /**
  * Class Album
  * Allows you to create instances of the Album class (as well as an instance in the album table of database) using a variety of
@@ -18,17 +26,46 @@ import java.util.UUID;
  * @author lbley
  * Created: 1/23/18
  */
+@Entity
+@Table (name = "album")
 public class Album {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
+	@Column (name = "album_id")
 	private String albumID;
+	
+	@Column (name = "title")
 	private String title;
+	
+	@Column (name = "release_date")
 	private String releaseDate;
+	
+	@Column (name = "cover_image_path")
 	private String coverImagePath;
+	
+	@Column (name = "recording_company_name")
 	private String recordingCompany;
+	
+	@Column (name = "number_of_tracks")
 	private int numberOfTracks;
+	
+	@Column (name = "PMRC_rating")
 	private String pmrcRating;
+	
+	@Column (name = "length")
 	private double length;
+	
+	@Transient
 	private Map<String, Song> albumSongs;
+	
+	
+	/**
+	 * Album Constructor that takes no arguments.  It makes a call to the super class for JPA purposes.
+	 */
+	public Album() {
+		super();
+	}
 	
 	
 	/**
@@ -379,6 +416,41 @@ public class Album {
 
 	public Map<String, Song> getAlbumSongs() {
 		return albumSongs;
+	}
+
+
+	public void setAlbumID(String albumID) {
+		this.albumID = albumID;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+
+	public void setRecordingCompany(String recordingCompany) {
+		this.recordingCompany = recordingCompany;
+	}
+
+
+	public void setNumberOfTracks(int numberOfTracks) {
+		this.numberOfTracks = numberOfTracks;
+	}
+
+
+	public void setPmrcRating(String pmrcRating) {
+		this.pmrcRating = pmrcRating;
+	}
+
+
+	public void setLength(double length) {
+		this.length = length;
 	}
 	
 	
